@@ -8,27 +8,30 @@ namespace Test
 {
     internal class CristmosTree
     {
-        internal string HalfCristmosTreeRecording(int num)
+        internal string GetHalfCristmosTreeRecording(int num)
         {
-            var tree = "";
+            var sbTree = new StringBuilder();
             for (int i = 0; i < num; i++)
             {
-                tree += string.Concat(Enumerable.Repeat("*", i + 1)) + "\n";
+                sbTree.Append('*', i + 1);
+                sbTree.Append('\n');
             }
-            return tree;
+            return sbTree.ToString();
         }
 
-        internal string CristmosTreeRecording(int num)
+        internal string GetCristmosTreeRecording(int num)
         {
             var decrementNumber = num;
-            var tree = string.Concat(Enumerable.Repeat(" ", decrementNumber--)) + "*\n";
+            var sbTree = new StringBuilder();
+            sbTree.Append(' ', decrementNumber--).Append("*\n");
 
             for (var i = 0; i < num - 1; i++)
             {
-                tree += string.Concat(Enumerable.Repeat(" ", decrementNumber--));
-                tree += string.Concat(Enumerable.Repeat("**", i + 1)) + "*\n";
+                sbTree.Append(' ', decrementNumber--).Append('*');
+                sbTree.Append('*', (i + 1) * 2);
+                sbTree = sbTree.Append('\n');
             }
-            return tree;
+            return sbTree.ToString();
         }
     }
 }
